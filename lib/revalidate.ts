@@ -3,9 +3,9 @@ import { revalidatePath } from "next/cache";
 import { authorByName } from "./site";
 
 /**
- * After a post is published, edited, unpublished or deleted: drop the cached
- * post page, its share image, the list, the author page, the sitemap and llms.txt
- * so the next visit is rebuilt with current data.
+ * After a post is published, edited, unpublished or deleted. The post page,
+ * list, author page, sitemap and llms.txt are rendered per request already;
+ * this drops cached copies (share image, and any CDN copy) as a second line.
  */
 export function revalidatePost(post: { slug: string; author_name: string }) {
   revalidatePath(`/blog/${post.slug}`);

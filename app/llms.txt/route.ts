@@ -2,7 +2,8 @@ import { SITE, abs } from "@/lib/site";
 import { REPORT_PAGES, reportPage } from "@/lib/report";
 import { listPublished } from "@/lib/posts";
 
-export const revalidate = 3600;
+// Rendered on every request (SSR) so publishing, edits and removals show at once.
+export const dynamic = "force-dynamic";
 
 /** llms.txt: a plain Markdown index of the site for AI tools (low effort by design). */
 export async function GET() {

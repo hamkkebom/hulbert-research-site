@@ -10,12 +10,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { PageToc } from "@/components/PageToc";
 import { breadcrumbs, publisherRef } from "@/lib/schema";
 
-// ISR: pages are built on first visit and rebuilt when the post changes.
-export const revalidate = 3600;
-export const dynamicParams = true;
-export function generateStaticParams() {
-  return [];
-}
+// Rendered on every request (SSR) so publishing, edits and removals show at once.
+export const dynamic = "force-dynamic";
 
 const load = cache(async (slug: string) => getPublished(decodeURIComponent(slug)));
 

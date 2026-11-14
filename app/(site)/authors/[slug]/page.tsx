@@ -7,11 +7,8 @@ import { formatDate } from "@/lib/format";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs, ORG_ID } from "@/lib/schema";
 
-export const revalidate = 3600;
-export const dynamicParams = false;
-export function generateStaticParams() {
-  return AUTHORS.map((a) => ({ slug: a.slug }));
-}
+// Rendered on every request (SSR) so publishing, edits and removals show at once.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: PageProps<"/authors/[slug]">): Promise<Metadata> {
   const { slug } = await params;

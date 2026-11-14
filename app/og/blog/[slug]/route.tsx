@@ -1,7 +1,8 @@
 import { ogCard } from "@/lib/og";
 import { getPublished } from "@/lib/posts";
 
-export const revalidate = 3600;
+// Per request: a draft visited before publishing must not leave a cached 404.
+export const dynamic = "force-dynamic";
 
 /** Share image for a published post, at a stable address: /og/blog/<slug> */
 export async function GET(_req: Request, ctx: RouteContext<"/og/blog/[slug]">) {

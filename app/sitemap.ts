@@ -3,8 +3,8 @@ import { abs, AUTHORS, SITE } from "@/lib/site";
 import { REPORT_PAGES } from "@/lib/report";
 import { listPublished } from "@/lib/posts";
 
-// Rebuilt hourly and immediately whenever a post is published, edited or removed.
-export const revalidate = 3600;
+// Rendered on every request (SSR) so publishing, edits and removals show at once.
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = await listPublished();

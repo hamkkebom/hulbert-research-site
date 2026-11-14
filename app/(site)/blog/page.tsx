@@ -6,8 +6,8 @@ import { formatDate } from "@/lib/format";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbs } from "@/lib/schema";
 
-// ISR: rebuilt at most hourly, and immediately when a post is published or edited.
-export const revalidate = 3600;
+// Rendered on every request (SSR) so publishing, edits and removals show at once.
+export const dynamic = "force-dynamic";
 
 const DESCRIPTION = "호머 헐버트 박사와 그의 시대를 다루는 칼럼 모음.";
 
